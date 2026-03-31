@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desarrollador Full Stack & Arquitecto Cloud | Portafolio</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#020617',
+                        card: 'rgba(30, 41, 59, 0.4)',
+                        primary: '#6366f1',
+                        secondary: '#a855f7'
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Icons (Phosphor Icons - clean and premium) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+
+<body class="bg-dark text-slate-100 antialiased selection:bg-primary/30 relative">
+
+    <!-- Ambient glowing orbs -->
+    <div class="bg-orb bg-orb-1 top-0 left-0"></div>
+    <div class="bg-orb bg-orb-2 bottom-0 right-0 fixed"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <i class="ph ph-terminal-window text-3xl text-primary mr-2"></i>
+                    <span class="font-bold text-xl tracking-wide whitespace-nowrap">JZ<span
+                            class="text-primary">.DEV</span></span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#inicio"
+                            class="text-slate-300 hover:text-white transition-colors text-sm font-medium">Inicio</a>
+                        <a href="#sobre-mi"
+                            class="text-slate-300 hover:text-white transition-colors text-sm font-medium">Sobre Mí</a>
+                        <a href="#servicios"
+                            class="text-slate-300 hover:text-white transition-colors text-sm font-medium">Servicios</a>
+                        <a href="#proyectos"
+                            class="text-slate-300 hover:text-white transition-colors text-sm font-medium">Proyectos</a>
+                        <a href="#contacto"
+                            class="bg-primary/10 border border-primary/30 text-primary hover:bg-primary hover:text-white px-5 py-2 rounded-full transition-all duration-300 text-sm font-medium shadow-[0_0_15px_rgba(99,102,241,0.2)] hover:shadow-[0_0_25px_rgba(99,102,241,0.5)]">
+                            Hablemos
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-300 hover:text-white focus:outline-none p-2">
+                        <i class="ph ph-list text-3xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden glass border-t border-slate-800">
+            <div class="px-2 pt-2 pb-5 space-y-1 sm:px-3 text-center">
+                <a href="#inicio"
+                    class="mobile-link block px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800/50 rounded-md">Inicio</a>
+                <a href="#sobre-mi"
+                    class="mobile-link block px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800/50 rounded-md">Sobre
+                    Mí</a>
+                <a href="#servicios"
+                    class="mobile-link block px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800/50 rounded-md">Servicios</a>
+                <a href="#proyectos"
+                    class="mobile-link block px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800/50 rounded-md">Proyectos</a>
+                <a href="#contacto"
+                    class="mobile-link block mt-4 mx-4 px-3 py-3 text-base font-medium bg-primary text-white rounded-md shadow-lg">Contactar</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden min-h-screen flex items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="lg:grid lg:grid-cols-12 lg:gap-16 items-center flex flex-col-reverse">
+                <!-- Text Content -->
+                <div class="lg:col-span-6 text-center lg:text-left mt-12 lg:mt-0 fade-in-up">
+                    <div
+                        class="inline-flex items-center px-3 py-1 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs font-semibold tracking-wide uppercase mb-6">
+                        <span class="w-2 h-2 rounded-full bg-primary mr-2 animate-pulse"></span>
+                        Disponible para nuevos proyectos
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6">
+                        <span class="block text-slate-100">Desarrollador Web</span>
+                        <span class="block text-gradient mt-2">Full Stack & Cloud</span>
+                    </h1>
+                    <p
+                        class="mt-4 text-lg sm:text-xl text-slate-400 max-w-2xl text-balance mx-auto lg:mx-0 font-light leading-relaxed">
+                        Más de 5 años transformando requerimientos empresariales en plataformas digitales escalables,
+                        seguras y de alto rendimiento. Resultados de negocio a través de código.
+                    </p>
+                    <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#proyectos"
+                            class="px-8 py-4 text-base font-medium rounded-lg text-white bg-gradient-to-r from-primary to-secondary hover:from-indigo-500 hover:to-purple-500 shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50 transition-all duration-300 transform hover:-translate-y-1 text-center">
+                            Ver Proyectos
+                        </a>
+                        <a href="#contacto"
+                            class="px-8 py-4 text-base font-medium rounded-lg text-slate-200 bg-slate-800/80 border border-slate-700 hover:bg-slate-700 hover:text-white backdrop-blur-sm transition-all duration-300 text-center flex items-center justify-center group">
+                            Contactar <i
+                                class="ph ph-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- Image -->
+                <div class="lg:col-span-6 w-full flex justify-center lg:justify-end fade-in-up delay-200">
+                    <div class="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-[450px] lg:h-[450px]">
+                        <!-- Decorative elements behind image -->
+                        <div
+                            class="absolute inset-0 bg-gradient-to-tr from-primary to-secondary rounded-full blur-2xl opacity-20 animate-pulse">
+                        </div>
+                        <div
+                            class="absolute inset-4 border border-slate-700/50 rounded-3xl rotate-6 transition-transform hover:rotate-12 duration-500">
+                        </div>
+                        <div
+                            class="absolute inset-4 border border-primary/30 rounded-3xl -rotate-6 transition-transform hover:-rotate-12 duration-500">
+                        </div>
+                        <!-- Provide actual existing image from /img -->
+                        <div class="relative w-full h-full rounded-3xl overflow-hidden glass-card p-2 animate-float">
+                            <img src="img/portada.jpeg" alt="Desarrollador"
+                                class="w-full h-full object-cover rounded-2xl grayscale-[20%] hover:grayscale-0 transition-all duration-500">
+                        </div>
+
+                        <!-- Floating Badges -->
+                        <div class="absolute -bottom-6 -left-6 glass px-4 py-3 rounded-xl shadow-xl flex items-center gap-3 animate-float"
+                            style="animation-delay: 1s;">
+                            <div class="bg-green-500/20 p-2 rounded-lg text-green-400">
+                                <i class="ph-fill ph-check-circle text-2xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-400 font-medium">Proyectos</p>
+                                <p class="text-sm font-bold text-slate-100">100% Entregados</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Mí Section -->
+    <section id="sobre-mi" class="py-24 bg-slate-900/50 relative border-y border-slate-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+                <div class="fade-in-up">
+                    <h2 class="text-primary text-sm font-bold tracking-wider uppercase mb-2">Conóceme</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold mb-6">Expertise Técnico alineado a tus <span
+                            class="text-gradient">Objetivos de Negocio</span></h3>
+                    <div class="space-y-4 text-slate-400 font-light leading-relaxed">
+                        <p>
+                            Con más de 5 años de experiencia consolidada en el sector tecnológico, me especializo en el
+                            desarrollo y arquitectura de soluciones web profesionales. Mi enfoque no es solo escribir
+                            código, sino resolver problemas empresariales y optimizar procesos mediante transformación
+                            digital.
+                        </p>
+                        <p>
+                            He colaborado estrechamente con pequeñas y medianas empresas, actuando no solo como
+                            desarrollador, sino como consultor tecnológico. Construyendo desde landing pages de alta
+                            conversión hasta ERPs complejos integrados en la nube.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="mt-12 lg:mt-0 fade-in-up delay-200">
+                    <div class="glass-card p-8 rounded-2xl relative overflow-hidden">
+                        <div class="absolute top-0 right-0 p-4 opacity-10">
+                            <i class="ph ph-code text-9xl"></i>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-6 relative z-10">Stack Tecnológico Principal</h4>
+
+                        <!-- Tech Badges -->
+                        <div class="flex flex-wrap gap-3 relative z-10">
+                            <!-- Frontend -->
+                            <span
+                                class="px-4 py-2 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400 text-sm font-medium flex items-center gap-2"><i
+                                    class="ph-fill ph-file-html"></i> HTML/CSS</span>
+                            <span
+                                class="px-4 py-2 rounded-lg bg-yellow-500/10 border border-yellow-500/20 text-yellow-400 text-sm font-medium flex items-center gap-2"><i
+                                    class="ph-fill ph-file-js"></i> JavaScript</span>
+                            <span
+                                class="px-4 py-2 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-sm font-medium flex items-center gap-2"><i
+                                    class="ph-fill ph-angular-logo"></i> Angular</span>
+
+                            <!-- Backend -->
+                            <span
+                                class="px-4 py-2 rounded-lg bg-green-500/10 border border-green-500/20 text-green-400 text-sm font-medium flex items-center gap-2"><i
+                                    class="ph-fill ph-node-logo"></i> Node.js</span>
+                            <span
+                                class="px-4 py-2 rounded-lg bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-sm font-medium flex items-center gap-2"><i
+                                    class="ph-fill ph-file-code"></i> PHP</span>
+
+                            <!-- Database -->
+                            <span
+                                class="px-4 py-2 rounded-lg bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium flex items-center gap-2"><i
+                                    class="ph-fill ph-database"></i> MySQL & MariaDB</span>
+                            <span
+                                class="px-4 py-2 rounded-lg bg-red-600/10 border border-red-600/20 text-red-500 text-sm font-medium flex items-center gap-2"><i
+                                    class="ph-fill ph-database"></i> Oracle</span>
+
+                            <!-- Cloud & APIs -->
+                            <span
+                                class="px-4 py-2 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-400 text-sm font-medium flex items-center gap-2"><i
+                                    class="ph-fill ph-fire"></i> Firebase</span>
+                            <span
+                                class="px-4 py-2 rounded-lg bg-blue-400/10 border border-blue-400/20 text-blue-300 text-sm font-medium flex items-center gap-2"><i
+                                    class="ph-fill ph-cloud"></i> Google Cloud</span>
+                            <span
+                                class="px-4 py-2 rounded-lg bg-slate-700/50 border border-slate-600 text-slate-300 text-sm font-medium flex items-center gap-2"><i
+                                    class="ph-fill ph-plugs-connected"></i> APIs & Webhooks</span>
+                            <span
+                                class="px-4 py-2 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-medium flex items-center gap-2"><i
+                                    class="ph-fill ph-credit-card"></i> Pasarelas de Pago</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios Section -->
+    <section id="servicios" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 fade-in-up">
+                <h2 class="text-primary text-sm font-bold tracking-wider uppercase mb-2">Soluciones</h2>
+                <h3 class="text-3xl md:text-4xl font-bold mb-4">Servicios Profesionales</h3>
+                <p class="text-slate-400 font-light">Diseño, desarrollo y despliegue de tecnología que resuelve
+                    problemas reales y escala junto a tu empresa.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Servicio 1 -->
+                <div class="glass-card p-8 rounded-2xl fade-in-up hover:bg-slate-800/50 group">
+                    <div
+                        class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-6 group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                        <i class="ph ph-browser text-3xl"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-3">Páginas Web Profesionales</h4>
+                    <p class="text-slate-400 text-sm font-light leading-relaxed">Sitios web corporativos de alto
+                        impacto, optimizados para SEO, máxima velocidad y diseñados para convertir visitantes en
+                        clientes potenciales.</p>
+                </div>
+
+                <!-- Servicio 2 -->
+                <div class="glass-card p-8 rounded-2xl fade-in-up delay-100 hover:bg-slate-800/50 group">
+                    <div
+                        class="w-14 h-14 bg-secondary/10 rounded-xl flex items-center justify-center text-secondary mb-6 group-hover:scale-110 group-hover:bg-secondary group-hover:text-white transition-all duration-300">
+                        <i class="ph ph-layout text-3xl"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-3">Plataformas Personalizadas</h4>
+                    <p class="text-slate-400 text-sm font-light leading-relaxed">Sistemas a medida (SaaS, Intranets,
+                        CRMs). Interfaces de usuario modernas y complejas enfocadas en la experiencia y retención del
+                        usuario.</p>
+                </div>
+
+                <!-- Servicio 3 -->
+                <div class="glass-card p-8 rounded-2xl fade-in-up delay-200 hover:bg-slate-800/50 group">
+                    <div
+                        class="w-14 h-14 bg-emerald-500/10 rounded-xl flex items-center justify-center text-emerald-500 mb-6 group-hover:scale-110 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-300">
+                        <i class="ph ph-database text-3xl"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-3">APIs y Backend</h4>
+                    <p class="text-slate-400 text-sm font-light leading-relaxed">Arquitectura sólida. Desarrollo de APIs
+                        RESTful seguras, optimización de bases de datos relacionales y microservicios escalables.</p>
+                </div>
+
+                <!-- Servicio 4 -->
+                <div class="glass-card p-8 rounded-2xl fade-in-up hover:bg-slate-800/50 group">
+                    <div
+                        class="w-14 h-14 bg-blue-500/10 rounded-xl flex items-center justify-center text-blue-500 mb-6 group-hover:scale-110 group-hover:bg-blue-500 group-hover:text-white transition-all duration-300">
+                        <i class="ph ph-credit-card text-3xl"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-3">Pasarelas de Pago</h4>
+                    <p class="text-slate-400 text-sm font-light leading-relaxed">Integración robusta con Stripe, PayPal,
+                        pasarelas locales y sistemas modernos para e-commerce sin fricción ni fallos de seguridad.</p>
+                </div>
+
+                <!-- Servicio 5 -->
+                <div class="glass-card p-8 rounded-2xl fade-in-up delay-100 hover:bg-slate-800/50 group">
+                    <div
+                        class="w-14 h-14 bg-orange-500/10 rounded-xl flex items-center justify-center text-orange-500 mb-6 group-hover:scale-110 group-hover:bg-orange-500 group-hover:text-white transition-all duration-300">
+                        <i class="ph ph-buildings text-3xl"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-3">ERP a Medida</h4>
+                    <p class="text-slate-400 text-sm font-light leading-relaxed">Sistemas de planificación de recursos
+                        empresariales 100% personalizados para centralizar ventas, inventarios y operaciones de tu
+                        negocio.</p>
+                </div>
+
+                <!-- Servicio 6 -->
+                <div class="glass-card p-8 rounded-2xl fade-in-up delay-200 hover:bg-slate-800/50 group">
+                    <div
+                        class="w-14 h-14 bg-indigo-500/10 rounded-xl flex items-center justify-center text-indigo-500 mb-6 group-hover:scale-110 group-hover:bg-indigo-500 group-hover:text-white transition-all duration-300">
+                        <i class="ph ph-cloud-arrow-up text-3xl"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold mb-3">Consultoría & Cloud</h4>
+                    <p class="text-slate-400 text-sm font-light leading-relaxed">Asesoramiento integral end-to-end.
+                        Despliegue seguro en Google Cloud, configuración de CI/CD y digitalización de procesos
+                        obsoletos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experiencia/Stats Section -->
+    <section class="py-16 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border-y border-slate-700/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-slate-700/50">
+                <div class="fade-in-up p-4">
+                    <p class="text-4xl lg:text-5xl font-extrabold text-white mb-2">+<span
+                            class="text-gradient hover:text-white transition-colors">5</span></p>
+                    <p class="text-sm text-slate-400 font-medium uppercase tracking-wider">Años de Exp.</p>
+                </div>
+                <div class="fade-in-up delay-100 p-4">
+                    <p class="text-4xl lg:text-5xl font-extrabold text-white mb-2">+<span
+                            class="text-gradient">40</span></p>
+                    <p class="text-sm text-slate-400 font-medium uppercase tracking-wider">Proyectos</p>
+                </div>
+                <div class="fade-in-up delay-200 p-4">
+                    <p class="text-4xl lg:text-5xl font-extrabold text-white mb-2">100<span
+                            class="text-gradient">%</span></p>
+                    <p class="text-sm text-slate-400 font-medium uppercase tracking-wider">Entrega Cloud</p>
+                </div>
+                <div class="fade-in-up delay-300 p-4">
+                    <p class="text-4xl lg:text-5xl font-extrabold text-white mb-2">+<span
+                            class="text-gradient">15</span></p>
+                    <p class="text-sm text-slate-400 font-medium uppercase tracking-wider">Clientes B2B</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proyectos Section -->
+    <section id="proyectos" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 fade-in-up">
+                <div class="max-w-2xl">
+                    <h2 class="text-primary text-sm font-bold tracking-wider uppercase mb-2">Portfolio</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold mb-4">Proyectos Destacados</h3>
+                    <p class="text-slate-400 font-light">Casos de éxito reales donde la tecnología ha resuelto cuellos
+                        de botella y ha generado nuevas oportunidades de negocio.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+                <!-- Proyecto 1 -->
+                <div class="group cursor-pointer fade-in-up" onclick="openModal('project-1')">
+                    <div
+                        class="relative rounded-2xl overflow-hidden glass border border-slate-700/50 aspect-video mb-6">
+                        <div
+                            class="absolute inset-0 bg-slate-900/60 group-hover:bg-transparent transition-colors duration-500 z-10">
+                        </div>
+                        <!-- Provide default assumed paths as requested -->
+                        <img src="img/project1.png" onerror="this.src='img/portada.jpeg'" alt="Plataforma Venta POS"
+                            class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+                        <div
+                            class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+                            <span
+                                class="glass px-6 py-3 rounded-full text-white font-medium shadow-2xl backdrop-blur-md border border-white/20 flex items-center gap-2">
+                                <i class="ph ph-magnifying-glass-plus text-xl"></i> Ver Detalles
+                            </span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex gap-2 mb-3">
+                            <span
+                                class="text-xs font-semibold px-2 py-1 bg-primary/20 text-primary rounded-md">Angular</span>
+                            <span
+                                class="text-xs font-semibold px-2 py-1 bg-blue-500/20 text-blue-400 rounded-md">Node.js</span>
+                            <span
+                                class="text-xs font-semibold px-2 py-1 bg-green-500/20 text-green-400 rounded-md">API</span>
+                        </div>
+                        <h4 class="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">Sistema POS &
+                            Venta de Boletas</h4>
+                        <p class="text-slate-400 font-light text-sm line-clamp-2">Plataforma integral para gestión de
+                            eventos, control de inventario y punto de venta físico sincronizado en la nube en tiempo
+                            real.</p>
+                    </div>
+                </div>
+
+                <!-- Proyecto 2 -->
+                <div class="group cursor-pointer fade-in-up delay-100" onclick="openModal('project-2')">
+                    <div
+                        class="relative rounded-2xl overflow-hidden glass border border-slate-700/50 aspect-video mb-6">
+                        <div
+                            class="absolute inset-0 bg-slate-900/60 group-hover:bg-transparent transition-colors duration-500 z-10">
+                        </div>
+                        <img src="img/project2.png" onerror="this.src='img/portada.jpeg'" alt="ERP Empresarial"
+                            class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+                        <div
+                            class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+                            <span
+                                class="glass px-6 py-3 rounded-full text-white font-medium shadow-2xl backdrop-blur-md border border-white/20 flex items-center gap-2">
+                                <i class="ph ph-magnifying-glass-plus text-xl"></i> Ver Detalles
+                            </span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex gap-2 mb-3">
+                            <span
+                                class="text-xs font-semibold px-2 py-1 bg-indigo-500/20 text-indigo-400 rounded-md">PHP</span>
+                            <span class="text-xs font-semibold px-2 py-1 bg-red-500/20 text-red-400 rounded-md">Oracle
+                                DB</span>
+                        </div>
+                        <h4 class="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">ERP Corporativo
+                            B2B</h4>
+                        <p class="text-slate-400 font-light text-sm line-clamp-2">Software de planificación de recursos
+                            empresariales, digitalizando contabilidad, RRHH e inventarios reemplazando silos de
+                            información.</p>
+                    </div>
+                </div>
+
+                <!-- Proyecto 3 -->
+                <div class="group cursor-pointer fade-in-up" onclick="openModal('project-3')">
+                    <div
+                        class="relative rounded-2xl overflow-hidden glass border border-slate-700/50 aspect-video mb-6">
+                        <div
+                            class="absolute inset-0 bg-slate-900/60 group-hover:bg-transparent transition-colors duration-500 z-10">
+                        </div>
+                        <img src="img/project3.png" onerror="this.src='img/portada.jpeg'" alt="Plataforma Turismo"
+                            class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+                        <div
+                            class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+                            <span
+                                class="glass px-6 py-3 rounded-full text-white font-medium shadow-2xl backdrop-blur-md border border-white/20 flex items-center gap-2">
+                                <i class="ph ph-magnifying-glass-plus text-xl"></i> Ver Detalles
+                            </span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex gap-2 mb-3">
+                            <span
+                                class="text-xs font-semibold px-2 py-1 bg-orange-500/20 text-orange-400 rounded-md">HTML/CSS</span>
+                            <span
+                                class="text-xs font-semibold px-2 py-1 bg-yellow-500/20 text-yellow-400 rounded-md">JavaScript</span>
+                        </div>
+                        <h4 class="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">Sitios Web Sector
+                            Turismo</h4>
+                        <p class="text-slate-400 font-light text-sm line-clamp-2">Conjunto de páginas web comerciales de
+                            alto impacto visual y rendimiento optimizado para agencias de viajes de gran tráfico.</p>
+                    </div>
+                </div>
+
+                <!-- Proyecto 4 -->
+                <div class="group cursor-pointer fade-in-up delay-100" onclick="openModal('project-4')">
+                    <div
+                        class="relative rounded-2xl overflow-hidden glass border border-slate-700/50 aspect-video mb-6">
+                        <div
+                            class="absolute inset-0 bg-slate-900/60 group-hover:bg-transparent transition-colors duration-500 z-10">
+                        </div>
+                        <img src="img/project4.png" onerror="this.src='img/portada.jpeg'" alt="Intranet Empresarial"
+                            class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+                        <div
+                            class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+                            <span
+                                class="glass px-6 py-3 rounded-full text-white font-medium shadow-2xl backdrop-blur-md border border-white/20 flex items-center gap-2">
+                                <i class="ph ph-magnifying-glass-plus text-xl"></i> Ver Detalles
+                            </span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex gap-2 mb-3">
+                            <span
+                                class="text-xs font-semibold px-2 py-1 bg-blue-400/20 text-blue-300 rounded-md">G-Cloud</span>
+                            <span
+                                class="text-xs font-semibold px-2 py-1 bg-amber-500/20 text-amber-400 rounded-md">Firebase</span>
+                        </div>
+                        <h4 class="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">Intranet &
+                            Arquitectura Cloud</h4>
+                        <p class="text-slate-400 font-light text-sm line-clamp-2">Despliegue de infraestructura segura y
+                            en tiempo real usando servicios de Google Cloud Platform y Firebase functions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto Section -->
+    <section id="contacto" class="py-24 relative overflow-hidden bg-slate-950">
+        <!-- Background elements for visual flair -->
+        <div
+            class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdib3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAzNHYtbGgtaDR2NGgtNG00LTMwSDBDMTIgMSAzMCAxOSAzMCA0MXoiIGZpbGw9IiMzMzQxNTUiIGZpbGwtb3BhY2l0eT0iLjA1Ii8+PC9nPjwvc3ZnPg==')] mix-blend-overlay">
+        </div>
+
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div
+                class="glass-card p-8 md:p-12 rounded-3xl border border-primary/20 shadow-2xl text-center md:text-left flex flex-col md:flex-row items-center gap-10 fade-in-up">
+                <div class="w-full md:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-white text-balance">¿Necesitas una solución
+                        digital a medida? <br><span class="text-gradient">Hablemos de tu proyecto.</span></h2>
+                    <p class="text-slate-400 font-light mb-8">La tecnología adecuada puede ser el diferenciador clave en
+                        tu sector. Analicemos los requerimientos de tu empresa sin compromiso.</p>
+                    <div class="flex flex-col space-y-4">
+                        <div class="flex items-center gap-4 text-slate-300">
+                            <div
+                                class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-primary">
+                                <i class="ph ph-envelope-simple text-xl"></i></div>
+                            <span>contacto@jzdev.com</span>
+                        </div>
+                        <div class="flex items-center gap-4 text-slate-300">
+                            <div
+                                class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-primary">
+                                <i class="ph ph-map-pin text-xl"></i></div>
+                            <span>Remoto / Global</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full md:w-1/2">
+                    <form class="space-y-4 flex flex-col items-center w-full" onsubmit="event.preventDefault();">
+                        <input type="text" placeholder="Nombre completo"
+                            class="w-full bg-slate-900/50 border border-slate-700/50 rounded-xl px-5 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all">
+                        <input type="email" placeholder="Correo electrónico corporativo"
+                            class="w-full bg-slate-900/50 border border-slate-700/50 rounded-xl px-5 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all">
+                        <textarea rows="3" placeholder="Cuéntame brevemente sobre tu proyecto o reto actual..."
+                            class="w-full bg-slate-900/50 border border-slate-700/50 rounded-xl px-5 py-3 text-white placeholder-slate-500 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all resize-none"></textarea>
+                        <button type="submit"
+                            class="w-full bg-primary hover:bg-indigo-600 text-white font-medium py-4 rounded-xl shadow-[0_0_20px_rgba(99,102,241,0.3)] hover:shadow-[0_0_30px_rgba(99,102,241,0.5)] transition-all duration-300 transform flex justify-center items-center gap-2">
+                            Enviar Mensaje <i class="ph ph-paper-plane-right"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-darker border-t border-slate-800/80 py-8">
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between text-slate-500 text-sm">
+            <p>&copy; 2026 JZ.DEV - Todos los derechos reservados.</p>
+            <div class="flex gap-4 mt-4 md:mt-0">
+                <a href="#" class="hover:text-primary transition-colors"><i
+                        class="ph-fill ph-linkedin-logo text-2xl"></i></a>
+                <a href="#" class="hover:text-primary transition-colors"><i
+                        class="ph-fill ph-github-logo text-2xl"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/1234567890" target="_blank"
+        class="fixed bottom-6 right-6 z-40 bg-[#25D366] hover:bg-[#20bd5aa2] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:shadow-2xl hover:shadow-[#25D366]/40 transform hover:-translate-y-1 transition-all duration-300 group">
+        <i class="ph-fill ph-whatsapp-logo text-3xl"></i>
+        <!-- Ping Animation -->
+        <span
+            class="absolute flex h-full w-full inset-0 rounded-full bg-[#25D366] opacity-30 animate-ping group-hover:hidden"></span>
+    </a>
+
+    <!-- Modals Portafolio -->
+    <!-- Modal Base Structure (Controlled by JS) -->
+    <div id="project-modal"
+        class="fixed inset-0 z-[100] modal-overlay flex items-center justify-center p-4 sm:p-6 bg-slate-950/80 backdrop-blur-sm">
+        <div
+            class="modal-content glass-card bg-slate-900 border border-slate-700 w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl shadow-2xl relative">
+            <button onclick="closeModal()"
+                class="absolute top-4 right-4 w-10 h-10 bg-slate-800 hover:bg-slate-700 text-white rounded-full flex items-center justify-center transition-colors z-10 custom-close-btn">
+                <i class="ph ph-x text-xl"></i>
+            </button>
+            <div id="modal-body">
+                <!-- Content injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
