@@ -54,8 +54,8 @@ const closeBtn = document.querySelector('.custom-close-btn');
 const projectsData = {
     'project-1': {
         title: 'Sistema POS & Venta de Boletas',
-        image: 'img/project1.png',
-        tags: ['Angular', 'Node.js', 'API REST', 'MySQL', 'WebSockets'],
+        image: 'img/Pos.png',
+        tags: ['Angular', 'Node.js', 'API REST', 'PosgreSql', 'WebSockets'],
         description: 'Plataforma integral desarrollada para la gestión de miles de asistentes. Integra un punto de venta (POS) físico sincronizado en tiempo real con la venta online mediante WebSockets.',
         features: [
             'Sincronización de inventario en tiempo real',
@@ -67,8 +67,8 @@ const projectsData = {
     },
     'project-2': {
         title: 'ERP Corporativo B2B a Medida',
-        image: 'img/project2.png',
-        tags: ['PHP', 'Oracle DB', 'JavaScript', 'Bootstrap/Tailwind'],
+        image: 'img/Proyecto_ERP.png',
+        tags: ['Angular', 'Firestore', 'JavaScript', 'Bootstrap'],
         description: 'Software de planificación de recursos empresariales diseñado específicamente para el sector logístico y de manufactura, digitalizando la contabilidad, RRHH e inventarios reemplazando silos de información.',
         features: [
             'Módulo contable con generación de reportes financieros',
@@ -81,6 +81,8 @@ const projectsData = {
     'project-3': {
         title: 'Sitios Web Alta Conversión (Turismo)',
         image: 'img/project3.png',
+        mediaType: 'video',
+        video: 'media/pagina_mulata.webm',
         tags: ['HTML5', 'TailwindCSS', 'JavaScript', 'SEO'],
         description: 'Conjunto de landing pages y sitios web comerciales con un alto impacto visual y rendimiento optimizado. Diseñadas para agencias de viajes internacionales y locales con gran tráfico de usuarios.',
         features: [
@@ -109,10 +111,15 @@ const projectsData = {
 function openModal(projectId) {
     const data = projectsData[projectId];
     if (!data) return;
+    const mediaHtml = data.mediaType === 'video'
+        ? `<video controls autoplay muted loop playsinline preload="metadata" class="w-full h-full object-cover">
+                <source src="${data.video}" type="video/webm">
+           </video>`
+        : `<img src="${data.image}" onerror="this.src='img/portada.jpeg'" alt="${data.title}" class="w-full h-full object-cover">`;
 
     modalBody.innerHTML = `
         <div class="relative w-full h-64 sm:h-80 md:h-96 rounded-t-3xl overflow-hidden bg-slate-800">
-            <img src="${data.image}" onerror="this.src='img/portada.jpeg'" alt="${data.title}" class="w-full h-full object-cover">
+            ${mediaHtml}
             <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
             <div class="absolute bottom-6 left-6 right-6">
                 <h3 class="text-3xl md:text-4xl font-bold text-white mb-3">${data.title}</h3>
