@@ -130,33 +130,29 @@
                 </div>
                 <!-- Image -->
                 <div class="lg:col-span-6 w-full flex justify-center lg:justify-end fade-in-up delay-200">
-                    <div class="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-[450px] lg:h-[450px]">
+                    <div class="relative w-52 h-52 sm:w-80 sm:h-80 lg:w-[450px] lg:h-[450px]">
                         <!-- Decorative elements behind image -->
                         <div
                             class="absolute inset-0 bg-gradient-to-tr from-primary to-secondary rounded-full blur-2xl opacity-20 animate-pulse">
                         </div>
                         <div
-                            class="absolute inset-4 border border-slate-700/50 rounded-3xl rotate-6 transition-transform hover:rotate-12 duration-500">
+                            class="absolute inset-4 border border-slate-700/50 rounded-3xl animate-rotate-slow">
                         </div>
                         <div
-                            class="absolute inset-4 border border-primary/30 rounded-3xl -rotate-6 transition-transform hover:-rotate-12 duration-500">
+                            class="absolute inset-4 border border-primary/30 rounded-3xl animate-rotate-slow-reverse">
                         </div>
-                        <!-- Provide actual existing image from /img -->
-                        <div class="relative w-full h-full rounded-3xl overflow-hidden glass-card p-2 animate-float">
-                            <img src="img/portada.jpeg" alt="Desarrollador"
-                                class="w-full h-full object-cover rounded-2xl grayscale-[20%] hover:grayscale-0 transition-all duration-500">
-                        </div>
-
-                        <!-- Floating Badges -->
-                        <div class="absolute -bottom-6 -left-6 glass px-4 py-3 rounded-xl shadow-xl flex items-center gap-3 animate-float"
-                            style="animation-delay: 1s;">
-                            <div class="bg-green-500/20 p-2 rounded-lg text-green-400">
-                                <i class="ph-fill ph-check-circle text-2xl"></i>
+                        <!-- Interactive 3D Tech Sphere -->
+                        <div class="relative w-full h-full flex items-center justify-center" id="tech-sphere-container">
+                            <!-- Glowing Central Core -->
+                            <div class="w-24 h-24 md:w-44 md:h-44 rounded-full bg-gradient-to-tr from-primary/20 to-secondary/20 border border-primary/40 backdrop-blur-xl flex flex-col items-center justify-center shadow-[0_0_50px_rgba(99,102,241,0.25)] animate-pulse z-20 relative group hover:scale-105 hover:border-primary/60 transition-all duration-500 cursor-pointer">
+                                <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-primary to-secondary blur-md opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
+                                <div class="relative flex flex-col items-center justify-center text-center">
+                                    <i class="ph ph-terminal-window text-3xl md:text-5xl text-primary animate-bounce"></i>
+                                    <span class="text-[10px] md:text-xs font-bold tracking-widest text-slate-300 mt-1 md:mt-2">JZ.DEV</span>
+                                </div>
                             </div>
-                            <div>
-                                <p class="text-xs text-slate-400 font-medium">Proyectos</p>
-                                <p class="text-sm font-bold text-slate-100">100% Entregados</p>
-                            </div>
+                            <!-- Orbiting Icons Container -->
+                            <div id="tech-sphere" class="absolute inset-0 pointer-events-none z-10"></div>
                         </div>
                     </div>
                 </div>
@@ -367,136 +363,164 @@
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-                <!-- Proyecto 1 -->
-                <div class="group cursor-pointer fade-in-up" onclick="openModal('project-1')">
-                    <div
-                        class="relative rounded-2xl overflow-hidden glass border border-slate-700/50 aspect-video mb-6">
-                        <div
-                            class="absolute inset-0 bg-slate-900/60 group-hover:bg-transparent transition-colors duration-500 z-10">
+            <!-- Dynamic 3D Coverflow Project Slider -->
+            <div class="relative mt-12 w-full flex flex-col items-center justify-center">
+                <!-- Carousel Container -->
+                <div class="relative w-full max-w-5xl h-[480px] md:h-[540px] flex items-center justify-center overflow-visible select-none" id="projects-carousel" style="perspective: 1200px;">
+                    <!-- Slider Track -->
+                    <div id="carousel-track" class="relative w-full h-full flex items-center justify-center pointer-events-none">
+                        
+                        <!-- Card 1: Ink Lovers Tattoo Studio (Website) -->
+                        <div class="carousel-card absolute w-[85%] max-w-[340px] md:max-w-[420px] bg-slate-900/60 backdrop-blur-md rounded-3xl border border-slate-800/80 overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-500 ease-out cursor-pointer pointer-events-auto flex flex-col justify-between group h-[400px] md:h-[455px]" onclick="handleCardClick(0, 'project-5')">
+                            <div class="relative w-full h-[180px] md:h-[220px] overflow-hidden">
+                                <div class="absolute inset-0 bg-slate-900/60 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
+                                <video autoplay muted loop playsinline preload="metadata"
+                                    class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+                                    <source src="media/ink_lover_studio.mp4" type="video/mp4">
+                                </video>
+                                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+                                    <span class="glass px-5 py-2.5 rounded-full text-white text-sm font-medium shadow-2xl backdrop-blur-md border border-white/20 flex items-center gap-2">
+                                        <i class="ph ph-magnifying-glass-plus text-lg"></i> Ver Detalles
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="p-5 flex-1 flex flex-col justify-between">
+                                <div>
+                                    <div class="flex gap-2 mb-3">
+                                        <span class="text-[10px] md:text-xs font-semibold px-2 py-1 bg-indigo-500/20 text-indigo-400 rounded-md">TailwindCSS</span>
+                                        <span class="text-[10px] md:text-xs font-semibold px-2 py-1 bg-orange-500/20 text-orange-400 rounded-md">HTML/CSS</span>
+                                        <span class="text-[10px] md:text-xs font-semibold px-2 py-1 bg-yellow-500/20 text-yellow-400 rounded-md">JavaScript</span>
+                                    </div>
+                                    <h4 class="text-xl md:text-2xl font-bold mb-2 group-hover:text-primary transition-colors">Ink Lovers Tattoo Studio</h4>
+                                    <p class="text-slate-400 font-light text-xs md:text-sm line-clamp-3">Sitio web premium para estudio de tatuajes profesional, diseñado para optimizar conversiones mediante una experiencia inmersiva y adaptativa.</p>
+                                </div>
+                            </div>
                         </div>
-                        <!-- Provide default assumed paths as requested -->
-                        <img src="img/Pos.png" onerror="this.src='img/portada.jpeg'" alt="Plataforma Venta POS"
-                            class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
-                        <div
-                            class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
-                            <span
-                                class="glass px-6 py-3 rounded-full text-white font-medium shadow-2xl backdrop-blur-md border border-white/20 flex items-center gap-2">
-                                <i class="ph ph-magnifying-glass-plus text-xl"></i> Ver Detalles
-                            </span>
+
+                        <!-- Card 2: Sitios Web Sector Turismo (Website) -->
+                        <div class="carousel-card absolute w-[85%] max-w-[340px] md:max-w-[420px] bg-slate-900/60 backdrop-blur-md rounded-3xl border border-slate-800/80 overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-500 ease-out cursor-pointer pointer-events-auto flex flex-col justify-between group h-[400px] md:h-[455px]" onclick="handleCardClick(1, 'project-3')">
+                            <div class="relative w-full h-[180px] md:h-[220px] overflow-hidden">
+                                <div class="absolute inset-0 bg-slate-900/60 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
+                                <video autoplay muted loop playsinline preload="metadata"
+                                    class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+                                    <source src="media/pagina_mulata.webm" type="video/webm">
+                                </video>
+                                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+                                    <span class="glass px-5 py-2.5 rounded-full text-white text-sm font-medium shadow-2xl backdrop-blur-md border border-white/20 flex items-center gap-2">
+                                        <i class="ph ph-magnifying-glass-plus text-lg"></i> Ver Detalles
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="p-5 flex-1 flex flex-col justify-between">
+                                <div>
+                                    <div class="flex gap-2 mb-3">
+                                        <span class="text-[10px] md:text-xs font-semibold px-2 py-1 bg-orange-500/20 text-orange-400 rounded-md">HTML/CSS</span>
+                                        <span class="text-[10px] md:text-xs font-semibold px-2 py-1 bg-yellow-500/20 text-yellow-400 rounded-md">JavaScript</span>
+                                    </div>
+                                    <h4 class="text-xl md:text-2xl font-bold mb-2 group-hover:text-primary transition-colors">Sitios Web Sector Turismo</h4>
+                                    <p class="text-slate-400 font-light text-xs md:text-sm line-clamp-3">Conjunto de páginas web comerciales de alto impacto visual y rendimiento optimizado para agencias de viajes de gran tráfico.</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <div class="flex gap-2 mb-3">
-                            <span
-                                class="text-xs font-semibold px-2 py-1 bg-primary/20 text-primary rounded-md">Angular</span>
-                            <span
-                                class="text-xs font-semibold px-2 py-1 bg-blue-500/20 text-blue-400 rounded-md">Node.js</span>
-                            <span
-                                class="text-xs font-semibold px-2 py-1 bg-green-500/20 text-green-400 rounded-md">API</span>
+
+                        <!-- Card 3: Sistema POS & Venta de Boletas (Web App) -->
+                        <div class="carousel-card absolute w-[85%] max-w-[340px] md:max-w-[420px] bg-slate-900/60 backdrop-blur-md rounded-3xl border border-slate-800/80 overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-500 ease-out cursor-pointer pointer-events-auto flex flex-col justify-between group h-[400px] md:h-[455px]" onclick="handleCardClick(2, 'project-1')">
+                            <div class="relative w-full h-[180px] md:h-[220px] overflow-hidden">
+                                <div class="absolute inset-0 bg-slate-900/60 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
+                                <img src="img/Pos.png" onerror="this.src='img/portada.jpeg'" alt="Plataforma Venta POS"
+                                    class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+                                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+                                    <span class="glass px-5 py-2.5 rounded-full text-white text-sm font-medium shadow-2xl backdrop-blur-md border border-white/20 flex items-center gap-2">
+                                        <i class="ph ph-magnifying-glass-plus text-lg"></i> Ver Detalles
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="p-5 flex-1 flex flex-col justify-between">
+                                <div>
+                                    <div class="flex gap-2 mb-3">
+                                        <span class="text-[10px] md:text-xs font-semibold px-2 py-1 bg-primary/20 text-primary rounded-md">Angular</span>
+                                        <span class="text-[10px] md:text-xs font-semibold px-2 py-1 bg-blue-500/20 text-blue-400 rounded-md">Node.js</span>
+                                        <span class="text-[10px] md:text-xs font-semibold px-2 py-1 bg-green-500/20 text-green-400 rounded-md">API</span>
+                                    </div>
+                                    <h4 class="text-xl md:text-2xl font-bold mb-2 group-hover:text-primary transition-colors">Sistema POS & Venta de Boletas</h4>
+                                    <p class="text-slate-400 font-light text-xs md:text-sm line-clamp-3">Plataforma integral para gestión de eventos, control de inventario y punto de venta físico sincronizado en la nube en tiempo real.</p>
+                                </div>
+                            </div>
                         </div>
-                        <h4 class="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">Sistema POS &
-                            Venta de Boletas</h4>
-                        <p class="text-slate-400 font-light text-sm line-clamp-2">Plataforma integral para gestión de
-                            eventos, control de inventario y punto de venta físico sincronizado en la nube en tiempo
-                            real.</p>
+
+                        <!-- Card 4: ERP Corporativo B2B (Web App) -->
+                        <div class="carousel-card absolute w-[85%] max-w-[340px] md:max-w-[420px] bg-slate-900/60 backdrop-blur-md rounded-3xl border border-slate-800/80 overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-500 ease-out cursor-pointer pointer-events-auto flex flex-col justify-between group h-[400px] md:h-[455px]" onclick="handleCardClick(3, 'project-2')">
+                            <div class="relative w-full h-[180px] md:h-[220px] overflow-hidden">
+                                <div class="absolute inset-0 bg-slate-900/60 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
+                                <img src="img/Proyecto_ERP.png" onerror="this.src='img/portada.jpeg'" alt="ERP Empresarial"
+                                    class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+                                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+                                    <span class="glass px-5 py-2.5 rounded-full text-white text-sm font-medium shadow-2xl backdrop-blur-md border border-white/20 flex items-center gap-2">
+                                        <i class="ph ph-magnifying-glass-plus text-lg"></i> Ver Detalles
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="p-5 flex-1 flex flex-col justify-between">
+                                <div>
+                                    <div class="flex gap-2 mb-3">
+                                        <span class="text-[10px] md:text-xs font-semibold px-2 py-1 bg-indigo-500/20 text-indigo-400 rounded-md">Angular</span>
+                                        <span class="text-[10px] md:text-xs font-semibold px-2 py-1 bg-red-500/20 text-red-400 rounded-md">Firestore DB</span>
+                                    </div>
+                                    <h4 class="text-xl md:text-2xl font-bold mb-2 group-hover:text-primary transition-colors">ERP Corporativo B2B</h4>
+                                    <p class="text-slate-400 font-light text-xs md:text-sm line-clamp-3">Software de planificación de recursos empresariales, digitalizando contabilidad, RRHH e inventarios reemplazando silos de información.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 5: Intranet & Arquitectura Cloud (Cloud Infrastructure) -->
+                        <div class="carousel-card absolute w-[85%] max-w-[340px] md:max-w-[420px] bg-slate-900/60 backdrop-blur-md rounded-3xl border border-slate-800/80 overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-500 ease-out cursor-pointer pointer-events-auto flex flex-col justify-between group h-[400px] md:h-[455px]" onclick="handleCardClick(4, 'project-4')">
+                            <div class="relative w-full h-[180px] md:h-[220px] overflow-hidden">
+                                <div class="absolute inset-0 bg-slate-900/60 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
+                                <video autoplay muted loop playsinline preload="metadata"
+                                    class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+                                    <source src="media/google_cloud.mp4" type="video/mp4">
+                                </video>
+                                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+                                    <span class="glass px-5 py-2.5 rounded-full text-white text-sm font-medium shadow-2xl backdrop-blur-md border border-white/20 flex items-center gap-2">
+                                        <i class="ph ph-magnifying-glass-plus text-lg"></i> Ver Detalles
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="p-5 flex-1 flex flex-col justify-between">
+                                <div>
+                                    <div class="flex gap-2 mb-3">
+                                        <span class="text-[10px] md:text-xs font-semibold px-2 py-1 bg-blue-400/20 text-blue-300 rounded-md">G-Cloud</span>
+                                        <span class="text-[10px] md:text-xs font-semibold px-2 py-1 bg-amber-500/20 text-amber-400 rounded-md">Firebase</span>
+                                    </div>
+                                    <h4 class="text-xl md:text-2xl font-bold mb-2 group-hover:text-primary transition-colors">Intranet & Arquitectura Cloud</h4>
+                                    <p class="text-slate-400 font-light text-xs md:text-sm line-clamp-3">Despliegue de infraestructura segura y en tiempo real usando servicios de Google Cloud Platform y Firebase functions.</p>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
-                <!-- Proyecto 2 -->
-                <div class="group cursor-pointer fade-in-up delay-100" onclick="openModal('project-2')">
-                    <div
-                        class="relative rounded-2xl overflow-hidden glass border border-slate-700/50 aspect-video mb-6">
-                        <div
-                            class="absolute inset-0 bg-slate-900/60 group-hover:bg-transparent transition-colors duration-500 z-10">
-                        </div>
-                        <img src="img/Proyecto_ERP.png" onerror="this.src='img/portada.jpeg'" alt="ERP Empresarial"
-                            class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
-                        <div
-                            class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
-                            <span
-                                class="glass px-6 py-3 rounded-full text-white font-medium shadow-2xl backdrop-blur-md border border-white/20 flex items-center gap-2">
-                                <i class="ph ph-magnifying-glass-plus text-xl"></i> Ver Detalles
-                            </span>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="flex gap-2 mb-3">
-                            <span
-                                class="text-xs font-semibold px-2 py-1 bg-indigo-500/20 text-indigo-400 rounded-md">Angular</span>
-                            <span class="text-xs font-semibold px-2 py-1 bg-red-500/20 text-red-400 rounded-md">Firestore
-                                DB</span>
-                        </div>
-                        <h4 class="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">ERP Corporativo
-                            B2B</h4>
-                        <p class="text-slate-400 font-light text-sm line-clamp-2">Software de planificación de recursos
-                            empresariales, digitalizando contabilidad, RRHH e inventarios reemplazando silos de
-                            información.</p>
-                    </div>
-                </div>
+                <!-- Navigation Controls for Mobile & Desktop -->
+                <div class="flex items-center gap-6 mt-8 z-30">
+                    <!-- Prev Button -->
+                    <button id="carousel-prev" class="md:absolute md:top-1/2 md:-translate-y-1/2 md:left-4 z-40 w-12 h-12 rounded-full glass border border-slate-700/50 flex items-center justify-center text-slate-300 hover:text-white hover:border-primary/50 transition-all duration-300 shadow-lg hover:scale-110 active:scale-95 cursor-pointer">
+                        <i class="ph ph-caret-left text-2xl"></i>
+                    </button>
 
-                <!-- Proyecto 3 -->
-                <div class="group cursor-pointer fade-in-up" onclick="openModal('project-3')">
-                    <div
-                        class="relative rounded-2xl overflow-hidden glass border border-slate-700/50 aspect-video mb-6">
-                        <div
-                            class="absolute inset-0 bg-slate-900/60 group-hover:bg-transparent transition-colors duration-500 z-10">
-                        </div>
-                        <video autoplay muted loop playsinline preload="metadata"
-                            class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
-                            <source src="media/pagina_mulata.webm" type="video/webm">
-                        </video>
-                        <div
-                            class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
-                            <span
-                                class="glass px-6 py-3 rounded-full text-white font-medium shadow-2xl backdrop-blur-md border border-white/20 flex items-center gap-2">
-                                <i class="ph ph-magnifying-glass-plus text-xl"></i> Ver Detalles
-                            </span>
-                        </div>
+                    <!-- Dots -->
+                    <div class="flex gap-2.5" id="carousel-dots">
+                        <span class="w-2.5 h-2.5 rounded-full bg-slate-700 transition-all duration-300 cursor-pointer"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-slate-700 transition-all duration-300 cursor-pointer"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-slate-700 transition-all duration-300 cursor-pointer"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-slate-700 transition-all duration-300 cursor-pointer"></span>
+                        <span class="w-2.5 h-2.5 rounded-full bg-slate-700 transition-all duration-300 cursor-pointer"></span>
                     </div>
-                    <div>
-                        <div class="flex gap-2 mb-3">
-                            <span
-                                class="text-xs font-semibold px-2 py-1 bg-orange-500/20 text-orange-400 rounded-md">HTML/CSS</span>
-                            <span
-                                class="text-xs font-semibold px-2 py-1 bg-yellow-500/20 text-yellow-400 rounded-md">JavaScript</span>
-                        </div>
-                        <h4 class="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">Sitios Web Sector
-                            Turismo</h4>
-                        <p class="text-slate-400 font-light text-sm line-clamp-2">Conjunto de páginas web comerciales de
-                            alto impacto visual y rendimiento optimizado para agencias de viajes de gran tráfico.</p>
-                    </div>
-                </div>
 
-                <!-- Proyecto 4 -->
-                <div class="group cursor-pointer fade-in-up delay-100" onclick="openModal('project-4')">
-                    <div
-                        class="relative rounded-2xl overflow-hidden glass border border-slate-700/50 aspect-video mb-6">
-                        <div
-                            class="absolute inset-0 bg-slate-900/60 group-hover:bg-transparent transition-colors duration-500 z-10">
-                        </div>
-                        <img src="img/project4.png" onerror="this.src='img/portada.jpeg'" alt="Intranet Empresarial"
-                            class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
-                        <div
-                            class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
-                            <span
-                                class="glass px-6 py-3 rounded-full text-white font-medium shadow-2xl backdrop-blur-md border border-white/20 flex items-center gap-2">
-                                <i class="ph ph-magnifying-glass-plus text-xl"></i> Ver Detalles
-                            </span>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="flex gap-2 mb-3">
-                            <span
-                                class="text-xs font-semibold px-2 py-1 bg-blue-400/20 text-blue-300 rounded-md">G-Cloud</span>
-                            <span
-                                class="text-xs font-semibold px-2 py-1 bg-amber-500/20 text-amber-400 rounded-md">Firebase</span>
-                        </div>
-                        <h4 class="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">Intranet &
-                            Arquitectura Cloud</h4>
-                        <p class="text-slate-400 font-light text-sm line-clamp-2">Despliegue de infraestructura segura y
-                            en tiempo real usando servicios de Google Cloud Platform y Firebase functions.</p>
-                    </div>
+                    <!-- Next Button -->
+                    <button id="carousel-next" class="md:absolute md:top-1/2 md:-translate-y-1/2 md:right-4 z-40 w-12 h-12 rounded-full glass border border-slate-700/50 flex items-center justify-center text-slate-300 hover:text-white hover:border-primary/50 transition-all duration-300 shadow-lg hover:scale-110 active:scale-95 cursor-pointer">
+                        <i class="ph ph-caret-right text-2xl"></i>
+                    </button>
                 </div>
             </div>
         </div>
@@ -566,7 +590,7 @@
     </footer>
 
     <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/1234567890" target="_blank"
+    <a href="https://wa.me/573245175372" target="_blank"
         class="fixed bottom-6 right-6 z-40 bg-[#25D366] hover:bg-[#20bd5aa2] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:shadow-2xl hover:shadow-[#25D366]/40 transform hover:-translate-y-1 transition-all duration-300 group">
         <i class="ph-fill ph-whatsapp-logo text-3xl"></i>
         <!-- Ping Animation -->

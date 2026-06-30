@@ -119,3 +119,22 @@ body {
   height: 400px;
   background: radial-gradient(circle, rgba(147,51,234,0.3) 0%, rgba(0,0,0,0) 70%);
 }
+
+/* Rotating Borders Animations */
+@keyframes rotate-clockwise {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes rotate-counterclockwise {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-360deg); }
+}
+
+.animate-rotate-slow {
+  animation: rotate-clockwise 20s linear infinite;
+}
+
+.animate-rotate-slow-reverse {
+  animation: rotate-counterclockwise 25s linear infinite;
+}

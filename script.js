@@ -96,6 +96,8 @@ const projectsData = {
     'project-4': {
         title: 'Intranet & Arquitectura Cloud',
         image: 'img/project4.png',
+        mediaType: 'video',
+        video: 'media/google_cloud.mp4',
         tags: ['Google Cloud', 'Firebase', 'React/Angular', 'NoSQL'],
         description: 'Despliegue de infraestructura segura y en tiempo real usando servicios de Google Cloud Platform y Firebase. Creado como solución interna para comunicación e intercambio de archivos seguro.',
         features: [
@@ -105,6 +107,22 @@ const projectsData = {
             'Chat interno en tiempo real',
             'Base de datos NoSQL altamente escalable'
         ]
+    },
+    'project-5': {
+        title: 'Ink Lovers Tattoo Studio',
+        image: 'img/portada.jpeg',
+        mediaType: 'video',
+        video: 'media/ink_lover_studio.mp4',
+        url: 'https://www.inkloverstudio.com/',
+        tags: ['TailwindCSS', 'HTML5/CSS3', 'JavaScript', 'UI/UX'],
+        description: 'Sitio web premium para estudio de tatuajes profesional, diseñado para optimizar conversiones y ofrecer una experiencia inmersiva e interactiva. Incluye optimización de performance mobile-first, galerías interactivas de portafolio y un widget de WhatsApp dinámico para agendamiento directo.',
+        features: [
+            'Diseño visual inmersivo con video background optimizado de alta fluidez',
+            'Widget interactivo y flotante de WhatsApp diseñado específicamente para agendamiento',
+            'Optimización SEO avanzada y performance extrema certificada por Lighthouse',
+            'Galerías dinámicas de tatuajes categorizadas para mostrar el trabajo del estudio',
+            'Diseño responsive adaptado meticulosamente para todos los dispositivos móviles'
+        ]
     }
 };
 
@@ -113,7 +131,7 @@ function openModal(projectId) {
     if (!data) return;
     const mediaHtml = data.mediaType === 'video'
         ? `<video controls autoplay muted loop playsinline preload="metadata" class="w-full h-full object-cover">
-                <source src="${data.video}" type="video/webm">
+                <source src="${data.video}" type="${data.video.endsWith('.mp4') ? 'video/mp4' : 'video/webm'}">
            </video>`
         : `<img src="${data.image}" onerror="this.src='img/portada.jpeg'" alt="${data.title}" class="w-full h-full object-cover">`;
 
@@ -144,8 +162,9 @@ function openModal(projectId) {
                     `).join('')}
                 </ul>
             </div>
-            <div class="mt-10 pt-6 border-t border-slate-700/50 flex justify-end gap-4">
+            <div class="mt-10 pt-6 border-t border-slate-700/50 flex justify-end gap-4 flex-wrap">
                 <button onclick="closeModal()" class="px-6 py-2 rounded-lg border border-slate-600 text-slate-300 hover:bg-slate-800 transition-colors font-medium">Cerrar</button>
+                ${data.url ? `<a href="${data.url}" target="_blank" class="px-6 py-2 rounded-lg bg-gradient-to-r from-primary to-secondary text-white hover:opacity-90 transition-opacity font-medium shadow-[0_0_15px_rgba(99,102,241,0.3)] flex items-center gap-2">Visitar Sitio <i class="ph ph-arrow-square-out"></i></a>` : ''}
                 <a href="#contacto" onclick="closeModal()" class="px-6 py-2 rounded-lg bg-primary hover:bg-indigo-600 text-white transition-colors font-medium shadow-[0_0_15px_rgba(99,102,241,0.3)]">Solicitar Demo</a>
             </div>
         </div>
@@ -172,3 +191,302 @@ modalOverlay.addEventListener('click', (e) => {
 });
 
 closeBtn.addEventListener('click', closeModal);
+
+// Tech Sphere 3D Interactive Animation
+const sphereContainer = document.getElementById('tech-sphere');
+const sphereParent = document.getElementById('tech-sphere-container');
+if (sphereContainer && sphereParent) {
+    const iconsData = [
+        { icon: 'ph-fill ph-file-html', label: 'HTML5', color: 'from-orange-500 to-amber-500' },
+        { icon: 'ph-fill ph-file-js', label: 'JavaScript', color: 'from-yellow-400 to-amber-500' },
+        { icon: 'ph-fill ph-angular-logo', label: 'Angular', color: 'from-red-600 to-pink-500' },
+        { icon: 'ph-fill ph-node-logo', label: 'Node.js', color: 'from-green-500 to-emerald-600' },
+        { icon: 'ph-fill ph-database', label: 'SQL/NoSQL', color: 'from-blue-500 to-cyan-500' },
+        { icon: 'ph-fill ph-fire', label: 'Firebase', color: 'from-orange-500 to-red-500' },
+        { icon: 'ph-fill ph-cloud', label: 'Google Cloud', color: 'from-sky-500 to-indigo-500' },
+        { icon: 'ph-fill ph-file-code', label: 'PHP', color: 'from-indigo-400 to-purple-600' },
+        { icon: 'ph ph-cpu', label: 'APIs', color: 'from-teal-400 to-emerald-500' },
+        { icon: 'ph ph-terminal', label: 'Full Stack', color: 'from-fuchsia-500 to-pink-500' }
+    ];
+
+    const numIcons = iconsData.length;
+    let rx = 0.003; // Rotation speed around X axis
+    let ry = 0.003; // Rotation speed around Y axis
+    let targetX = 0.003;
+    let targetY = 0.003;
+
+    // Create HTML elements for each icon
+    const elements = iconsData.map((data, index) => {
+        const div = document.createElement('div');
+        div.className = 'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 glass px-2 py-1 md:px-3 md:py-2 rounded-lg md:rounded-xl flex items-center gap-1 md:gap-2 border border-slate-700/50 hover:border-primary/50 transition-colors duration-300 shadow-lg cursor-pointer select-none';
+        
+        div.innerHTML = `
+            <div class="bg-gradient-to-r ${data.color} bg-clip-text text-transparent text-sm md:text-xl font-bold flex items-center justify-center">
+                <i class="${data.icon}"></i>
+            </div>
+            <span class="text-[10px] md:text-xs font-semibold text-slate-300 whitespace-nowrap">${data.label}</span>
+        `;
+        
+        sphereContainer.appendChild(div);
+
+        // Spherical distribution (Golden Spiral / Fibonacci)
+        const theta = Math.acos(1 - 2 * (index + 0.5) / numIcons);
+        const phi = Math.sqrt(numIcons * Math.PI) * theta;
+
+        return {
+            element: div,
+            nx: Math.sin(theta) * Math.cos(phi),
+            ny: Math.sin(theta) * Math.sin(phi),
+            nz: Math.cos(theta)
+        };
+    });
+
+    let active = true;
+    
+    // Stop animation when page section is out of view for performance
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            active = entry.isIntersecting;
+        });
+    }, { threshold: 0.1 });
+    observer.observe(sphereParent);
+
+    // Track mouse movement relative to the sphere container
+    document.addEventListener('mousemove', (e) => {
+        if (!active) return;
+        
+        const rect = sphereParent.getBoundingClientRect();
+        const mouseX = e.clientX - (rect.left + rect.width / 2);
+        const mouseY = e.clientY - (rect.top + rect.height / 2);
+        
+        const distance = Math.hypot(mouseX, mouseY);
+        if (distance < 600) {
+            // Speed up and change direction based on mouse position
+            targetX = (mouseY / 300) * 0.015;
+            targetY = -(mouseX / 300) * 0.015;
+        } else {
+            // Default idle drift
+            targetX = 0.002;
+            targetY = 0.002;
+        }
+    });
+
+    // Handle touch events for mobile
+    document.addEventListener('touchmove', (e) => {
+        if (!active || e.touches.length === 0) return;
+        const touch = e.touches[0];
+        const rect = sphereParent.getBoundingClientRect();
+        const mouseX = touch.clientX - (rect.left + rect.width / 2);
+        const mouseY = touch.clientY - (rect.top + rect.height / 2);
+        
+        const distance = Math.hypot(mouseX, mouseY);
+        if (distance < 400) {
+            targetX = (mouseY / 200) * 0.02;
+            targetY = -(mouseX / 200) * 0.02;
+        }
+    }, { passive: true });
+
+    function updateSphere() {
+        if (!active) {
+            requestAnimationFrame(updateSphere);
+            return;
+        }
+
+        // Smoothly interpolate rotation speed
+        rx += (targetX - rx) * 0.08;
+        ry += (targetY - ry) * 0.08;
+
+        const cosX = Math.cos(rx);
+        const sinX = Math.sin(rx);
+        const cosY = Math.cos(ry);
+        const sinY = Math.sin(ry);
+
+        // Dynamically compute the orbit radius based on the current window size
+        const isMobile = window.innerWidth < 768;
+        const currentRadius = isMobile ? 75 : 180;
+
+        elements.forEach(item => {
+            // Rotate the normalized unit vector around X
+            const y1 = item.ny * cosX - item.nz * sinX;
+            const z1 = item.nz * cosX + item.ny * sinX;
+
+            // Rotate the normalized unit vector around Y
+            const x2 = item.nx * cosY - z1 * sinY;
+            const z2 = z1 * cosY + item.nx * sinY;
+
+            item.nx = x2;
+            item.ny = y1;
+            item.nz = z2;
+
+            // Compute screen position based on normalized coordinates and active radius
+            const posX = item.nx * currentRadius;
+            const posY = item.ny * currentRadius;
+            const posZ = item.nz * currentRadius;
+
+            // Apply 3D perspective projection styling
+            const depth = 350;
+            const scale = (depth + posZ) / depth;
+            const opacity = 0.15 + 0.85 * ((posZ + currentRadius) / (2 * currentRadius));
+            const zIndex = Math.round((posZ + currentRadius) * 10);
+
+            item.element.style.transform = `translate3d(${posX}px, ${posY}px, 0px) translate(-50%, -50%) scale(${scale})`;
+            item.element.style.opacity = opacity;
+            item.element.style.zIndex = zIndex;
+        });
+
+        requestAnimationFrame(updateSphere);
+    }
+
+    updateSphere();
+}
+
+// 3D Coverflow Projects Carousel Logic
+let activeProjectIndex = 0;
+const projectGlows = [
+    'rgba(217, 70, 239, 0.4)', // Fuchsia for Ink Lovers
+    'rgba(249, 115, 22, 0.4)',  // Orange for Turismo
+    'rgba(99, 102, 241, 0.4)',  // Indigo for POS
+    'rgba(239, 68, 68, 0.4)',   // Red for ERP
+    'rgba(59, 130, 246, 0.4)'   // Blue for Cloud
+];
+
+function handleCardClick(index, projectId) {
+    if (index === activeProjectIndex) {
+        openModal(projectId);
+    } else {
+        activeProjectIndex = index;
+        updateCarousel();
+    }
+}
+
+function updateCarousel() {
+    const cards = document.querySelectorAll('.carousel-card');
+    const dots = document.querySelectorAll('#carousel-dots span');
+    if (!cards.length) return;
+
+    cards.forEach((card, i) => {
+        const offset = i - activeProjectIndex;
+        const absOffset = Math.abs(offset);
+        
+        if (absOffset > 2) {
+            // Hide cards that are far away
+            card.style.opacity = '0';
+            card.style.visibility = 'hidden';
+            card.style.transform = `translateX(${offset * 150}px) scale(0.6) rotateY(${offset * -35}deg) translateZ(-300px)`;
+            card.style.zIndex = '0';
+            return;
+        }
+
+        card.style.visibility = 'visible';
+        card.style.opacity = `${1 - absOffset * 0.35}`;
+        card.style.zIndex = `${10 - absOffset}`;
+
+        // Compute Coverflow transform variables
+        const scale = 1 - absOffset * 0.12;
+        const rotateY = offset * -25;
+        const translateZ = absOffset * -100;
+        
+        // Horizontal offset: spacing out the side cards dynamically
+        let translateX = offset * 180;
+        if (window.innerWidth < 768) {
+            translateX = offset * 110;
+        }
+
+        card.style.transform = `translateX(${translateX}px) scale(${scale}) rotateY(${rotateY}deg) translateZ(${translateZ}px)`;
+        
+        // Highlight active card with a matching theme glow
+        if (offset === 0) {
+            card.classList.add('active-card');
+            card.style.borderColor = projectGlows[i].replace('0.4', '0.6');
+            card.style.boxShadow = `0 25px 60px -15px ${projectGlows[i]}, 0 0 30px 2px ${projectGlows[i].replace('0.4', '0.15')}`;
+            card.style.pointerEvents = 'auto';
+        } else {
+            card.classList.remove('active-card');
+            card.style.borderColor = 'rgba(255, 255, 255, 0.05)';
+            card.style.boxShadow = '0 20px 50px rgba(0, 0, 0, 0.5)';
+            // Non-centered cards can still be clicked to center them, but prevent hover elements trigger inside them
+            card.style.pointerEvents = 'auto';
+        }
+    });
+
+    // Update Dots
+    if (dots.length) {
+        dots.forEach((dot, i) => {
+            if (i === activeProjectIndex) {
+                const activeColorClass = activeProjectIndex === 0 ? 'bg-fuchsia-500 shadow-[0_0_10px_rgba(217,70,239,0.5)]' :
+                                       activeProjectIndex === 1 ? 'bg-orange-500 shadow-[0_0_10px_rgba(249,115,22,0.5)]' :
+                                       activeProjectIndex === 2 ? 'bg-indigo-500 shadow-[0_0_10px_rgba(99,102,241,0.5)]' :
+                                       activeProjectIndex === 3 ? 'bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)]' :
+                                       'bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)]';
+                dot.className = `w-6 h-2.5 rounded-full ${activeColorClass} transition-all duration-300 cursor-pointer`;
+            } else {
+                dot.className = 'w-2.5 h-2.5 rounded-full bg-slate-700 transition-all duration-300 cursor-pointer hover:bg-slate-600';
+            }
+        });
+    }
+}
+
+// Button Navigation
+const prevBtn = document.getElementById('carousel-prev');
+const nextBtn = document.getElementById('carousel-next');
+if (prevBtn && nextBtn) {
+    prevBtn.addEventListener('click', () => {
+        const cards = document.querySelectorAll('.carousel-card');
+        activeProjectIndex = (activeProjectIndex - 1 + cards.length) % cards.length;
+        updateCarousel();
+    });
+    nextBtn.addEventListener('click', () => {
+        const cards = document.querySelectorAll('.carousel-card');
+        activeProjectIndex = (activeProjectIndex + 1) % cards.length;
+        updateCarousel();
+    });
+}
+
+// Dot Navigation Click Handler
+const dotsContainer = document.getElementById('carousel-dots');
+if (dotsContainer) {
+    const dots = dotsContainer.querySelectorAll('span');
+    dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+            activeProjectIndex = i;
+            updateCarousel();
+        });
+    });
+}
+
+// Touch/Swipe Support
+const carouselContainer = document.getElementById('projects-carousel');
+if (carouselContainer) {
+    let startX = 0;
+    let endX = 0;
+    
+    carouselContainer.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+    }, { passive: true });
+
+    carouselContainer.addEventListener('touchend', (e) => {
+        endX = e.changedTouches[0].clientX;
+        const diffX = startX - endX;
+        const cards = document.querySelectorAll('.carousel-card');
+        if (Math.abs(diffX) > 50) {
+            if (diffX > 0) {
+                // Swipe left -> next card
+                activeProjectIndex = (activeProjectIndex + 1) % cards.length;
+            } else {
+                // Swipe right -> prev card
+                activeProjectIndex = (activeProjectIndex - 1 + cards.length) % cards.length;
+            }
+            updateCarousel();
+        }
+    }, { passive: true });
+}
+
+// Initialize Carousel on DOM Load
+document.addEventListener('DOMContentLoaded', () => {
+    updateCarousel();
+});
+
+// Also trigger update on resize
+window.addEventListener('resize', () => {
+    updateCarousel();
+});
