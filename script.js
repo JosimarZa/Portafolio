@@ -481,12 +481,143 @@ if (carouselContainer) {
     }, { passive: true });
 }
 
-// Initialize Carousel on DOM Load
+// Initialize Carousel & Tech Stack on DOM Load
 document.addEventListener('DOMContentLoaded', () => {
     updateCarousel();
+    initTechStack();
 });
 
 // Also trigger update on resize
 window.addEventListener('resize', () => {
     updateCarousel();
 });
+
+// --- Tech Stack Modernization Logic ---
+function initTechStack() {
+    const badges = document.querySelectorAll('.tech-badge');
+    const filterBtns = document.querySelectorAll('.tech-filter-btn');
+    const ambientGlow = document.getElementById('tech-ambient-glow');
+    const detailsBox = document.getElementById('tech-details-box');
+    const detailsText = document.getElementById('tech-details-text');
+    
+    if (!badges.length || !detailsBox || !detailsText) return;
+
+    // 1. Assign random animation durations and delays for floating effect
+    badges.forEach(badge => {
+        const duration = 5 + Math.random() * 4; // Between 5s and 9s
+        const delay = Math.random() * -6; // Negative delay to start mid-cycle
+        badge.style.animation = `float-badge ${duration}s ease-in-out infinite`;
+        badge.style.animationDelay = `${delay}s`;
+    });
+
+    // 2. Category Filter Switcher
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active classes
+            filterBtns.forEach(b => {
+                b.classList.remove('active', 'text-primary', 'border-primary/30', 'bg-primary/10');
+                b.classList.add('text-slate-400', 'border-slate-800/80', 'bg-slate-900/40');
+            });
+
+            // Set active class to current button
+            btn.classList.remove('text-slate-400', 'border-slate-800/80', 'bg-slate-900/40');
+            btn.classList.add('active', 'text-primary', 'border-primary/30', 'bg-primary/10');
+
+            const filter = btn.getAttribute('data-filter');
+
+            // Filter badges
+            badges.forEach(badge => {
+                const category = badge.getAttribute('data-category');
+                if (filter === 'all' || category === filter) {
+                    badge.classList.remove('inactive-badge');
+                } else {
+                    badge.classList.add('inactive-badge');
+                }
+            });
+
+            // Update ambient glow color gradient based on category
+            let glowGradient = 'radial-gradient(circle at 50% 50%, rgba(99,102,241,0.15), transparent 70%)';
+            if (filter === 'frontend') {
+                glowGradient = 'radial-gradient(circle at 50% 50%, rgba(249,115,22,0.15), transparent 70%)';
+            } else if (filter === 'backend') {
+                glowGradient = 'radial-gradient(circle at 50% 50%, rgba(34,197,94,0.15), transparent 70%)';
+            } else if (filter === 'database') {
+                glowGradient = 'radial-gradient(circle at 50% 50%, rgba(59,130,246,0.15), transparent 70%)';
+            } else if (filter === 'cloud') {
+                glowGradient = 'radial-gradient(circle at 50% 50%, rgba(16,185,129,0.15), transparent 70%)';
+            }
+            ambientGlow.style.backgroundImage = glowGradient;
+            
+            // Clear details box on category change
+            resetDetailsBox();
+        });
+    });
+
+    // 3. Hover Details Box Interaction
+    badges.forEach(badge => {
+        const showDetails = () => {
+            if (badge.classList.contains('inactive-badge')) return;
+
+            const desc = badge.getAttribute('data-desc');
+            const glowColor = badge.style.getPropertyValue('--glow-color').trim();
+
+            detailsText.textContent = desc;
+            detailsText.classList.remove('text-slate-400', 'italic');
+            detailsText.classList.add('text-white', 'font-medium');
+
+            // Apply tech specific glowing borders & soft background glow to details box
+            detailsBox.style.borderColor = glowColor;
+            detailsBox.style.boxShadow = `0 6px 20px -4px ${glowColor}`;
+            // Convert opacity to 0.05 for subtle background tint
+            const softBg = glowColor.replace('0.4', '0.05');
+            detailsBox.style.backgroundColor = softBg;
+        };
+
+        const hideDetails = () => {
+            // Only reset if this is the active badge being previewed
+            const desc = badge.getAttribute('data-desc');
+            if (detailsText.textContent === desc) {
+                resetDetailsBox();
+            }
+        };
+
+        // Desktop mouse events
+        badge.addEventListener('mouseenter', showDetails);
+        badge.addEventListener('mouseleave', hideDetails);
+
+        // Mobile touch events (toggle on tap)
+        badge.addEventListener('touchstart', (e) => {
+            e.stopPropagation(); // Avoid triggering body touchstart
+            
+            // If already focused, clicking again resets it
+            const desc = badge.getAttribute('data-desc');
+            if (detailsText.textContent === desc) {
+                resetDetailsBox();
+                badge.classList.remove('active-hover');
+            } else {
+                // Clear any other active-hover classes
+                badges.forEach(b => b.classList.remove('active-hover'));
+                badge.classList.add('active-hover');
+                showDetails();
+            }
+        }, { passive: true });
+    });
+
+    // Tap outside to reset details on mobile
+    document.addEventListener('touchstart', () => {
+        resetDetailsBox();
+    }, { passive: true });
+
+    function resetDetailsBox() {
+        detailsText.textContent = 'Pasa el cursor o presiona cualquier tecnología para ver más detalles.';
+        detailsText.classList.remove('text-white', 'font-medium');
+        detailsText.classList.add('text-slate-400', 'italic');
+
+        detailsBox.style.borderColor = 'rgba(30, 41, 59, 0.6)';
+        detailsBox.style.boxShadow = 'none';
+        detailsBox.style.backgroundColor = 'rgba(2, 6, 23, 0.4)';
+        
+        badges.forEach(b => b.classList.remove('active-hover'));
+    }
+}
+
